@@ -30,7 +30,10 @@ angular.module('todo', ['ionic'])
 		$scope.taskModal.show();
   };
 
-
+	//Close the new task modal
+	$scope.closeNewTask = function() {
+		$scope.taskModal.hide();
+	};
 
 })
 
