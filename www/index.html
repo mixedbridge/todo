@@ -22,7 +22,7 @@
     <script src="cordova.js"></script>
 
   </head>
-  <body ng-app="todo">
+  <body ng-app="todo" ng-controller="TodoCtrl">
 		<ion-side-menus>
 
 			<!-- Center content --> 
@@ -32,6 +32,12 @@
 				</ion-header-bar>
 
 				<ion-content>
+					<!-- our list and list items -->
+					<ion-list>
+						<ion-item ng-repeat="task in tasks">
+							{{task.title}}
+						</ion-item>
+					</ion-list>
 				</ion-content>
 			</ion-side-menu-content>
 
