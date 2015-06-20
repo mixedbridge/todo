@@ -12,7 +12,7 @@ angular.module('todo', ['ionic'])
     	{ title: 'Get high enough to grab the flag' },
     	{ title: 'Find the Princess' }
   	];
-});
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
