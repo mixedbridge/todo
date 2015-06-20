@@ -15,6 +15,16 @@ angular.module('todo', ['ionic'])
 		scope: $scope,
     animation: 'slide-in-up'
 	});
+
+	//Called when form is submitted
+	$scope.createTask = function(task) {
+		$scope.tasks.push({
+			title: task.title
+		});
+		$scope.taskModal.hide();
+		task.title = "";
+	};
+
 })
 
 .run(function($ionicPlatform) {
