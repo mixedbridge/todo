@@ -5,8 +5,16 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('todo', ['ionic'])
 
-.controller('TodoCtrl', function($scope) {
+.controller('TodoCtrl', function($scope, $ionicModal) {
 	$scope.tasks = [];
+
+	// Create and load the Modal
+	$ionicModal.fromTemplateUrl('new-task.html', function(modal) {
+  	$scope.taskModal = modal;
+  }, {
+		scope: $scope,
+    animation: 'slide-in-up'
+	});
 })
 
 .run(function($ionicPlatform) {
