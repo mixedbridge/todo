@@ -25,6 +25,13 @@ angular.module('todo', ['ionic'])
 		task.title = "";
 	};
 
+	//Open the new task modal
+	$scope.newTask = function() {
+		$scope.taskModal.show();
+  };
+
+
+
 })
 
 .run(function($ionicPlatform) {
