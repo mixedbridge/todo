@@ -5,6 +5,23 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('todo', ['ionic'])
 
+.factory('Projects', function() {
+	
+	return {
+		all: function() {
+    	var projectString = window.localStorage['projects'];
+    	if(projectString) {
+      	return angular.fromJson(projectString);
+      }
+      return [];
+    },
+		save: function(projects) {
+      window.localStorage['projects'] = angular.toJson(projects);
+    },
+	}
+
+}
+
 .controller('TodoCtrl', function($scope, $ionicModal) {
 
 	//	Create new project with given title
