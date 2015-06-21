@@ -8,6 +8,14 @@ angular.module('todo', ['ionic'])
 .controller('TodoCtrl', function($scope, $ionicModal) {
 	$scope.tasks = [];
 
+	//	Create new project
+	$scope.newProject = function() {
+		var projectTitle = prompt('Project name');
+		if(projectTitle) {
+			createProject(projectTitle);
+		}
+	};
+
 	//	Called to select the given project
 	$scope.selectProject = function(project, index) {
 		$scope.activeProject = project;
