@@ -5,7 +5,34 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('todo', ['ionic'])
 
-.controller('TodoCtrl', function($scope, $ionicModal) {
+.factory('Projects', function() {
+  return {
+    all: function() {
+      var projectString = window.localStorage['projects'];
+      if(projectString) {
+        return angular.fromJson(projectString);
+      }
+      return [];
+    },
+    save: function(projects) {
+      window.localStorage['projects'] = angular.toJson(projects);
+    },
+    newProject: function(projectTitle) {
+			return {
+        title: projectTitle,
+        tasks: []
+      };
+    },
+    getLastActiveIndex: function() {
+      return parseInt(window.localStorage['lastActiveProject']) || 0;
+    },
+    setLastActiveIndex: function(index) {
+      window.localStorage['lastActiveProject'] = index;
+    }
+  }
+})
+
+.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) { 
 
 	//	Create new project with given title
 	var createProject = function(projectTitle) {
