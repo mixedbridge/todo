@@ -46,6 +46,20 @@ angular.module('todo', ['ionic'])
 		$ionicSideMenuDelegate.toggleLeft();
 	};
 
+	// Try to create the first project, using
+	// $timeout to initialize everything properly
+	$timeout(function() {
+		if($scope.projects.length == 0) {
+			while(true) {
+				var projectTitle = prompt('Your first project title:');
+				if(projectTitle) {
+					createProject(projectTitle);
+					 break;
+				}
+			}
+		}
+	});
+
 })
 
 .run(function($ionicPlatform) {
