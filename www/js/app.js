@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('todo', ['ionic'])
 
-.factory('Projects', function() {
+.factory('Projects', function() { 
   return {
     all: function() {
       var projectString = window.localStorage['projects'];
