@@ -6,7 +6,11 @@
 angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope, $ionicModal) {
-	$scope.tasks = [];
+
+
+
+	// Initialize projects
+	$scope.projects = Projects.all();
 
 
 	//	Select last active projectt
