@@ -7,11 +7,16 @@ angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope, $ionicModal) {
 
-
+	//	Create new project with given title
+	var createProject = function(projectTitle) {
+		var newProject = Projects.newProject(projectTitle);
+		$scope.projects.push(newProject);
+		Projects.save($scope.projects);
+		$scope.selectProject(newProject, $scope.projects.length-1);
+	}
 
 	// Initialize projects
 	$scope.projects = Projects.all();
-
 
 	//	Select last active projectt
 	$scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
