@@ -42,6 +42,10 @@ angular.module('todo', ['ionic'])
 		$scope.taskModal.hide();
 	};
 
+	$scope.toggleProjects = function() {
+		$ionicSideMenuDelegate.toggleLeft();
+	};
+
 })
 
 .run(function($ionicPlatform) {
