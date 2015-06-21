@@ -21,7 +21,7 @@ angular.module('todo', ['ionic'])
 		if(!$scope.activeProject || !task) {
 			return;
 		}
-		$scope.activeProjevt.tasks.push({
+		$scope.activeProject.tasks.push({
 			title: task.title
 		});
 		$scope.taskModal.hide();
