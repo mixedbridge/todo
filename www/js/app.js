@@ -8,6 +8,13 @@ angular.module('todo', ['ionic'])
 .controller('TodoCtrl', function($scope, $ionicModal) {
 	$scope.tasks = [];
 
+	//	Called to select the given project
+	$scope.selectProject = function(project, index) {
+		$scope.activeProject = project;
+		Projects.setLastActiveIndex(index);
+		$ionicSideMenuDelegate.toggleLeft(false);
+	};
+
 	// Create and load the Modal
 	$ionicModal.fromTemplateUrl('new-task.html', function(modal) {
   	$scope.taskModal = modal;
