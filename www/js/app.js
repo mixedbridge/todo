@@ -18,10 +18,17 @@ angular.module('todo', ['ionic'])
 
 	//Called when form is submitted
 	$scope.createTask = function(task) {
-		$scope.tasks.push({
+		if(!$scope.activeProject || !task) {
+			return;
+		}
+		$scope.activeProjevt.tasks.push({
 			title: task.title
 		});
 		$scope.taskModal.hide();
+
+		//Apparently inefficient, to save all projects
+		Projects.save($scope.projects);
+
 		task.title = "";
 	};
 
