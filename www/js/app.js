@@ -11,13 +11,26 @@ angular.module('todo', ['ionic'])
 		all: function() {
     	var projectString = window.localStorage['projects'];
     	if(projectString) {
-      	return angular.fromJson(projectString);
-      }
-      return [];
-    },
+      		return angular.fromJson(projectString);
+      	}
+      	return [];
+    	},
+		
 		save: function(projects) {
-      window.localStorage['projects'] = angular.toJson(projects);
-    },
+      		window.localStorage['projects'] = angular.toJson(projects);
+    	},
+		newProject: function(projectTitle){
+			return {
+        		title: projectTitle,
+        		tasks: []
+      		};
+    	},
+		getLastActiveIndex: function() {
+      		return parseInt(window.localStorage['lastActiveProject']) || 0;
+    	},
+    	setLastActiveIndex: function(index) {
+      		window.localStorage['lastActiveProject'] = index;
+    	}
 	}
 
 }
@@ -80,7 +93,7 @@ angular.module('todo', ['ionic'])
 	//Open the new task modal
 	$scope.newTask = function() {
 		$scope.taskModal.show();
-  };
+  	};
 
 	//Close the new task modal
 	$scope.closeNewTask = function() {
@@ -105,7 +118,7 @@ angular.module('todo', ['ionic'])
 		}
 	});
 
-})
+});
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
