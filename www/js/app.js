@@ -35,7 +35,7 @@ angular.module('todo', ['ionic'])
 
 }
 
-.controller('TodoCtrl', function($scope, $ionicModal) {
+.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) { 
 
 	//	Create new project with given title
 	var createProject = function(projectTitle) {
@@ -118,7 +118,7 @@ angular.module('todo', ['ionic'])
 		}
 	});
 
-});
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
