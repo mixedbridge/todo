@@ -47,15 +47,11 @@ angular.module('todo', ['ionic'])
   }
 })
 
-.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $location, $ionicSideMenuDelegate, $ionicViewService) { 
+.controller('TodoCtrl', function($scope, $state, $timeout, $ionicModal, Projects, $location, $ionicSideMenuDelegate, $ionicHistory) { 
 
 	window.localStorage.clear();
 	if(window.localStorage.getItem("password") === "undefined" || window.localStorage.getItem("password") === null) {
-        $ionicViewService.nextViewOptions({
-            disableAnimate: true,
-            disableBack: true
-        });
-        $location.path("/login");
+        $state.go('login');
     }
 
 
@@ -142,14 +138,14 @@ angular.module('todo', ['ionic'])
 
 })
 
-.controller('LoginController', function($scope, $location, $ionicViewService) {
+.controller('LoginController', function($scope, $state,$location, $ionicHistory) {
     $scope.login = function(password) {
         window.localStorage.setItem("password", password);
-        $ionicViewService.nextViewOptions({
+        $ionicHistory.nextViewOptions({
             disableAnimate: true,
             disableBack: true
         });
-        $location.path("/todo");
+        $state.go('todo');
     }
 })
 
