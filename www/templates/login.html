@@ -1,0 +1,16 @@
+<ion-view title="Login">
+    <ion-content>
+        <div ng-controller="LoginController">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input ng-model="password" type="text" placeholder="Password" />
+                </label>
+            </div>
+            <div class="padding">
+                <button ng-click="login(password)" class="button button-block button-balanced">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
