@@ -5,6 +5,21 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('todo', ['ionic'])
 
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginController'
+            })  
+            .state('todo', {
+                url: '/todo',
+                templateUrl: 'templates/todo.html',
+                controller: 'TodoCtrl'
+            }); 
+        $urlRouterProvider.otherwise('/todo');
+})
+
 .factory('Projects', function() { 
   return {
     all: function() {
@@ -35,6 +50,14 @@ angular.module('todo', ['ionic'])
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) { 
 
 	window.localStorage.clear();
+	if(window.localStorage.getItem("password") === "undefined" || window.localStorage.getItem("password") === null) {
+        $ionicViewService.nextViewOptions({
+            disableAnimate: true,
+            disableBack: true
+        });
+        $location.path("/login");
+    }
+
 
 	//	Create new project with given title
 	var createProject = function(projectTitle) {
@@ -117,6 +140,17 @@ angular.module('todo', ['ionic'])
 //		}
 //	});
 
+})
+
+.controller('LoginController', function($scope, $location, $ionicViewService) {
+    $scope.login = function(password) {
+        window.localStorage.setItem("password", password);
+        $ionicViewService.nextViewOptions({
+            disableAnimate: true,
+            disableBack: true
+        });
+        $location.path("/todo");
+    }
 })
 
 .run(function($ionicPlatform) {
