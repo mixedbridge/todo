@@ -34,6 +34,8 @@ angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) { 
 
+	window.localStorage.clear();
+
 	//	Create new project with given title
 	var createProject = function(projectTitle) {
 		var newProject = Projects.newProject(projectTitle);
@@ -103,17 +105,17 @@ angular.module('todo', ['ionic'])
 
 	// Try to create the first project, using
 	// $timeout to initialize everything properly
-	$timeout(function() {
-		if($scope.projects.length == 0) {
-			while(true) {
-				var projectTitle = prompt('Your first project title:');
-				if(projectTitle) {
-					createProject(projectTitle);
-					 break;
-				}
-			}
-		}
-	});
+//	$timeout(function() {
+//		if($scope.projects.length == 0) {
+//			while(true) {
+//				var projectTitle = prompt('Your first project title:');
+//				if(projectTitle) {
+//					createProject(projectTitle);
+//					 break;
+//				}
+//			}
+//		}
+//	});
 
 })
 
