@@ -47,7 +47,7 @@ angular.module('todo', ['ionic'])
   }
 })
 
-.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) { 
+.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate, $ionicViewService) { 
 
 	window.localStorage.clear();
 	if(window.localStorage.getItem("password") === "undefined" || window.localStorage.getItem("password") === null) {
